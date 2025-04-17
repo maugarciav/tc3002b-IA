@@ -109,7 +109,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
        * Precisión en el conjunto de validación: 81.91%
        * Pérdida en el conjunto de validación: 0.8366
    
-       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, logra reduce significativa en la pérdida de validación (0.8366). Esta configuración logra un mejor equilibrio entre la capacidad del            modelo para generalizar a datos no vistos y la confianza en sus predicciones. Las gráficas también confirman una menor divergencia entre las curvas de entrenamiento y validación, lo que indica una reducción efectiva del sobreajuste. En                comparación con los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
+       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, logra reduce significativa en la pérdida de validación (0.8366). Esta configuración logra un mejor equilibrio entre la capacidad del            modelo para generalizar a datos no vistos y la confianza en sus predicciones. Las gráficas también confirman una menor divergencia general entre las curvas de entrenamiento y validación, indicando una reducción del sobreajuste, sin                    embargo, en las curvas de pérdida, especialmente la de validación, hay fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los        tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
 
 
 
