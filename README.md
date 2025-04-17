@@ -75,7 +75,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
         * Precisión en el conjunto de validación: 79.28%
         * Pérdida en el conjunto de validación: 0.8031
 
-
+La implementación de la regularización L2 demostró una mejora en el rendimiento del modelo en comparación con V1. Hubo un incremento en la precisión del conjunto de validación (de 76.15% a 79.28%) y una disminución en la pérdida de validación (de 0.9511 a 0.8031). Esto indica que la regularización ayudó a reducir el sobreajuste y mejorar la generalización del modelo. Sin embargo, las gráficas de entrenamiento y validación aún muestran cierto grado de sobreajuste.
 
 ##  Mejoras para V2
 * **Arquitecturas de Modelo Avanzadas:** Probar con arquitecturas CNN más complejas o modelos pre-entrenados (como VGG16, ResNet o EfficientNet) para mejorar la precisión.
