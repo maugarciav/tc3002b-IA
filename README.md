@@ -64,7 +64,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
    ### TEST 1: V2 - Regularization (Strength=1e-4, Dropout=0.4)
    
-   * Para esta primera iteración, se aplicó regularización L2 a las capas Conv2D y la capa Densa intermedia con un strength de 1e-4, manteniendo la tasa de dropout en 0.4. 
+   * En la primera iteración, se aplicó regularización L2 a las capas Conv2D y la capa Densa intermedia con un strength de 1e-4, manteniendo la tasa de dropout en 0.4. 
    
    * Gráficas de precisión y pérdida:
    
@@ -81,7 +81,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    
    ### Test 2: V2 - Strong Regularization (Strength=1e-3, Dropout=0.5)
    
-   * En esta segunda iteración de V2, se aplicó una regularización L2 más fuerte (strength de 1e-3) y una tasa de dropout aumentada (0.5) con el objetivo de reducir aún más el sobreajuste observado en las pruebas anteriores.
+   * En la segunda iteración de V2, se aplicó una regularización L2 más fuerte (strength de 1e-3) y una tasa de dropout aumentada (0.5) con el objetivo de reducir aún más el sobreajuste observado en las pruebas anteriores.
    
    * Gráficas de precisión y pérdida:
    
@@ -98,7 +98,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    
    ### Test 3: V2 - Moderate Regularization (Strength=5e-4, Dropout=0.45)
    
-   * En esta tercera iteración de V2, se ajustó la regularización L2 a un strength de 5e-4 y la tasa de dropout a 0.45, buscando un punto intermedio entre las configuraciones de los Test 1 y Test 2.
+   * En la tercera iteración de V2, se ajustó la regularización L2 a un strength de 5e-4 y la tasa de dropout a 0.45, buscando un punto intermedio entre las configuraciones de los Test 1 y Test 2.
    
    * Gráficas de precisión y pérdida:
    
@@ -149,7 +149,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
    ### TEST 1: V3 - Increase Dropout
    
-   * Para esta primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y en las capas densas. La arquitectura es la siguiente:
+   * Para la primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y manteniedno en las capas densas (Esta es la arquitectura mas similar a la propuesta en el paper). La arquitectura es la siguiente:
    
        * Capas Convolucionales:
            * Conv2D (32 filtros, (3x3), ReLU)
@@ -184,7 +184,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 ### TEST 2: V3 - Dropout Variation 
 
-* En esta segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
+* En la segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
 
     * Capas Convolucionales:
         * Conv2D (32 filtros, (3x3), ReLU)
