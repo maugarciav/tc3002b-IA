@@ -121,7 +121,70 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
     * **Dropout Placement:** Se aplicó Dropout después de cada capa MaxPooling2D en las capas convolucionales, además de las capas densas.
     * **Max-Norm Regularization:** Se añadió regularización Max-Norm a la capa Dense intermedia.
 
-* La arquitectura es la siguiente:
+* La arquitectura que propoone el paper es la siguiente (los valores de dropout pueden variar e irse ajustando para buscar un mejor resultado al igual que MaxNorm):
+
+    * Capas Convolucionales:
+        * Conv2D (32 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout 
+        * Conv2D (64 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout 
+        * Conv2D (128 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout 
+    * Capas Densas:
+        * Flatten
+        * Dropout 
+        * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
+        * Dropout 
+        * Dense (num\_classes, Softmax)
+         
+* **Entrenamiento:**
+
+    * Optimizador: Adam (learning rate = 1e-4)
+    * Pérdida: Sparse Categorical Crossentropy
+    * Métricas: Accuracy
+
+
+   ### TEST 1: V3 - Increase Dropout
+   
+   * Para esta primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y en las capas densas. La arquitectura es la siguiente:
+   
+       * Capas Convolucionales:
+           * Conv2D (32 filtros, (3x3), ReLU)
+           * MaxPooling2D ((2x2))
+           * Dropout (0.1)  
+           * Conv2D (64 filtros, (3x3), ReLU)
+           * MaxPooling2D ((2x2))
+           * Dropout (0.25)  
+           * Conv2D (128 filtros, (3x3), ReLU)
+           * MaxPooling2D ((2x2))
+           * Dropout (0.25)  
+       * Capas Densas:
+           * Flatten
+           * Dropout (0.5)  
+           * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
+           * Dropout (0.5)  
+           * Dense (num\_classes, Softmax)
+   
+   * Gráficas de precisión y pérdida:
+   
+       * *(No proporcionaste la gráfica para Test 1, asegúrate de incluirla aquí)*
+   
+   * Evaluación en el Conjunto de Validación:
+   
+       * Precisión en el conjunto de validación: 74.01%
+       * Pérdida en el conjunto de validación: 0.6699
+   
+   
+   Los resulrado muestran una mejora bastante significativa en la perdida en comparacion con V1 y V2. Esta disminución en la pérdida nos indica que el modelo V3 está realizando predicciones con mayor confianza. Además, tenemos un aprendizaje mucho       más controlado y estable durante el entrenamiento. Sin embargo tambien tenemos una disminucion en la precisión. En general, V3 demuestra que la aplicación de las técnicas de Dropout y Max-Norm, tiene un impacto significativo en la regularización      del modelo, ayudando a un aprendizaje más estable y mejorando la confianza en las predicciones, pero debemos buscar hiperparametros que no comprmoetan tanto la precisión.
+
+
+
+### TEST 2: V3 - Dropout Variation 
+
+* En esta segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
 
     * Capas Convolucionales:
         * Conv2D (32 filtros, (3x3), ReLU)
@@ -139,26 +202,17 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
         * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
         * Dropout (0.4)
         * Dense (num\_classes, Softmax)
-* **Entrenamiento:**
 
-    * Optimizador: Adam (learning rate = 1e-4)
-    * Pérdida: Sparse Categorical Crossentropy
-    * Métricas: Accuracy
+* Gráficas de precisión y pérdida:
 
+    ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV3-Test1.png)
 
-   ### Test 1: V3
-   
-   * Gráficas de precisión y pérdida:
-   
-       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV3-Test1.png)
-   
-   * Evaluación en el Conjunto de Validación:
- 
-      * Precisión en el conjunto de validación: 78.45%
-      * Pérdida en el conjunto de validación: 0.5771
+* Evaluación en el Conjunto de Validación:
 
-   Los resultados de V3 muestran una mejora en la pérdida en comparación con V1 y V2, aunque la precisión es ligeramente inferior a la mejor precisión obtenida en V2. Esta disminución en la pérdida nos indica que el modelo V3 está realizando             predicciones con mayor confianza. Además, tenemos un aprendizaje mucho más controlado y estable durante el entrenamiento, que era justo lo que buscabamos. En general, V3 demuestra que la aplicación de las técnicas de Dropout y Max-Norm, tal como      se propone en el paper de Srivastava, tiene un impacto significativo en la regularización del modelo, ayudando a un aprendizaje más estable y mejorando la confianza en las predicciones.
+    * Precisión en el conjunto de validación: 78.45%
+    * Pérdida en el conjunto de validación: 0.5771
 
+   La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 78.45%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información más     relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5771. En resumen, se observa una compensación: Test 2 ofrece una mejora     considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, aunque no alcanza la máxima precisión de V2. 
 
 ## Autor
 
