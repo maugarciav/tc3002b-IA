@@ -113,6 +113,53 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 
 
+##   Versión 3 (V3)
+
+* En V3, se implementó la arquitectura y las técnicas de regularización descritas en el paper "[Dropout: A Simple Way to Prevent Neural Networks from Overfitting](https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)" de Srivastava, Hinton, Krizhevsky, Sutskever, y Salakhutdinov (2014).Este trabajo introduce la técnica de "dropout" como método para reducir el overfitting en redes neuronales profundas. Buscamos tener menor fluctuación en las gráficas de precisón y pérdida lo cual indcaría una mejor estabilidad en el proceso de aprendisaje.
+* Los cambios clave con respecto a V2 son:
+
+    * **Dropout Placement:** Se aplicó Dropout después de cada capa MaxPooling2D en las capas convolucionales, además de las capas densas.
+    * **Max-Norm Regularization:** Se añadió regularización Max-Norm a la capa Dense intermedia.
+
+* La arquitectura es la siguiente:
+
+    * Capas Convolucionales:
+        * Conv2D (32 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout (0.2)
+        * Conv2D (64 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout (0.2)
+        * Conv2D (128 filtros, (3x3), ReLU)
+        * MaxPooling2D ((2x2))
+        * Dropout (0.2)
+    * Capas Densas:
+        * Flatten
+        * Dropout (0.4)
+        * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
+        * Dropout (0.4)
+        * Dense (num\_classes, Softmax)
+* **Entrenamiento:**
+
+    * Optimizador: Adam (learning rate = 1e-4)
+    * Pérdida: Sparse Categorical Crossentropy
+    * Métricas: Accuracy
+
+
+   ### Test 1: V3
+   
+   * Gráficas de precisión y pérdida:
+   
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV3-Test1.png)
+   
+   * Evaluación en el Conjunto de Validación:
+ 
+      * Precisión en el conjunto de validación: 78.45%
+      * Pérdida en el conjunto de validación: 0.5771
+
+   Los resultados de V3 muestran una mejora en la pérdida en comparación con V1 y V2, aunque la precisión es ligeramente inferior a la mejor precisión obtenida en V2. Esta disminución en la pérdida nos indica que el modelo V3 está realizando             predicciones con mayor confianza. Además, tenemos un aprendizaje mucho más controlado y estable durante el entrenamiento, que era justo lo que buscabamos. En general, V3 demuestra que la aplicación de las técnicas de Dropout y Max-Norm, tal como      se propone en el paper de Srivastava, tiene un impacto significativo en la regularización del modelo, ayudando a un aprendizaje más estable y mejorando la confianza en las predicciones.
+
+
 ## Autor
 
 Mauricio Garcia Villanuvea
