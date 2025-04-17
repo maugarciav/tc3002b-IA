@@ -59,39 +59,59 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 * En V1, se observó un sobreajuste del modelo, donde el rendimiento en el conjunto de entrenamiento era significativamente mejor que en el conjunto de validación.
 * Para mitigar este problema, se exploraron estrategias de regularización basadas en el paper "[An Overview of Overfitting and its Solutions" de Xue Ying (2019)](https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf)".
-* De las técnicas descritas en el paper, se decidió implementar regularización L2 y ajustar la tasa de dropout.
+* De las técnicas descritas en el paper, se decidió implementar regularización L2 y ajustar la tasa de dropout. (La regularización L2 se implementó utilizando la función `kernel_regularizer` de Keras).
 * Todos los demás aspectos de la arquitectura del modelo y el proceso de entrenamiento se mantuvieron sin cambios respecto a V1.
 
-### TEST 1: V2 - Regularization (Strength=1e-4, Dropout=0.4)
-
-* Para esta primera iteración, se aplicó regularización L2 a las capas Conv2D y la capa Densa intermedia con un strength de 1e-4, manteniendo la tasa de dropout en 0.4. (La regularización L2 se implementó utilizando la función `kernel_regularizer` de Keras).
-
-* Gráficas de precisión y pérdida:
-
-    ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test1.png)
-
-    * Evaluación en el Conjunto de Validación:
-
-        * Precisión en el conjunto de validación: 79.28%
-        * Pérdida en el conjunto de validación: 0.8031
-
-   La implementación de la regularización L2 demostró una mejora en el rendimiento del modelo en comparación con V1. Hubo un incremento en la precisión del conjunto de validación (de 76.15% a 79.28%) y una disminución en la pérdida de validación (de     0.9511 a 0.8031). Esto indica que la regularización ayudó a reducir el sobreajuste y mejorar la generalización del modelo. Sin embargo, las gráficas de entrenamiento y validación aún muestran cierto grado de sobreajuste.
-
-### Test 2: V2 - Strong Regularization (Strength=1e-3, Dropout=0.5)
-
-* En esta segunda iteración de V2, se aplicó una regularización L2 más fuerte (strength de 1e-3) y una tasa de dropout aumentada (0.5) con el objetivo de reducir aún más el sobreajuste observado en las pruebas anteriores.
-
-* Gráficas de precisión y pérdida:
-
-     ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test2.png)
-
+   ### TEST 1: V2 - Regularization (Strength=1e-4, Dropout=0.4)
+   
+   * Para esta primera iteración, se aplicó regularización L2 a las capas Conv2D y la capa Densa intermedia con un strength de 1e-4, manteniendo la tasa de dropout en 0.4. 
+   
+   * Gráficas de precisión y pérdida:
+   
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test1.png)
+   
+       * Evaluación en el Conjunto de Validación:
+   
+           * Precisión en el conjunto de validación: 79.28%
+           * Pérdida en el conjunto de validación: 0.8031
+   
+      La implementación de la regularización L2 demostró una mejora en el rendimiento del modelo en comparación con V1. Hubo un incremento en la precisión del conjunto de validación (de 76.15% a 79.28%) y una disminución en la pérdida de validación         (de 0.9511 a 0.8031). Esto indica que la regularización ayudó a reducir el sobreajuste y mejorar la generalización del modelo. Sin embargo, las gráficas de entrenamiento y validación aún muestran cierto grado de sobreajuste.
+   
+   
+   
+   ### Test 2: V2 - Strong Regularization (Strength=1e-3, Dropout=0.5)
+   
+   * En esta segunda iteración de V2, se aplicó una regularización L2 más fuerte (strength de 1e-3) y una tasa de dropout aumentada (0.5) con el objetivo de reducir aún más el sobreajuste observado en las pruebas anteriores.
+   
+   * Gráficas de precisión y pérdida:
+   
+        ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test2.png)
+   
+      * Evaluación en el Conjunto de Validación:
+      
+          * Precisión en el conjunto de validación: 81.09%
+          * Pérdida en el conjunto de validación: 0.9722
+   
+      Los resultados de este test indican una mejora en la precisión del modelo en el conjunto de validación, obteniendo una mejor generalización. Además, las gráficas muestran una menor divergencia entre las curvas de entrenamiento y validación, lo        que confirma una reducción del sobreajuste. Sin embargo, la pérdida en el conjunto de validación *aumentó* a 0.9722 (en comparación con 0.8031 en Test 1). Es decir, el modelo está clasificando más imágenes correctamente, pero la "confianza"           promedio en las predicciones es menor. Esto refleja el efecto de la mayor regularización. En general, este modelo muestra una compensación entre precisión y confianza, con una mejor capacidad para generalizar a expensas de una mayor pérdida.
+      
+   
+   
+   ### Test 3: V2 - Moderate Regularization (Strength=5e-4, Dropout=0.45)
+   
+   * En esta tercera iteración de V2, se ajustó la regularización L2 a un strength de 5e-4 y la tasa de dropout a 0.45, buscando un punto intermedio entre las configuraciones de los Test 1 y Test 2.
+   
+   * Gráficas de precisión y pérdida:
+   
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test3.png)
+   
    * Evaluación en el Conjunto de Validación:
    
-       * Precisión en el conjunto de validación: 81.09%
-       * Pérdida en el conjunto de validación: 0.9722
-
-   Los resultados de este test indican una mejora en la precisión del modelo en el conjunto de validación, obteniendo una mejor generalización. Además, las gráficas muestran una menor divergencia entre las curvas de entrenamiento y validación, lo que    confirma una reducción del sobreajuste. Sin embargo, la pérdida en el conjunto de validación *aumentó* a 0.9722 (en comparación con 0.8031 en Test 1). Es decir, el modelo está clasificando más imágenes correctamente, pero la "confianza" promedio      en las predicciones es menor. Esto refleja el efecto de la mayor regularización. En general, este modelo muestra una compensación entre precisión y confianza, con una mejor capacidad para generalizar a expensas de una mayor pérdida.
+       * Precisión en el conjunto de validación: 81.91%
+       * Pérdida en el conjunto de validación: 0.8366
    
+       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, logra reduce significativa en la pérdida de validación (0.8366). Esta configuración logra un mejor equilibrio entre la capacidad del            modelo para generalizar a datos no vistos y la confianza en sus predicciones. Las gráficas también confirman una menor divergencia entre las curvas de entrenamiento y validación, lo que indica una reducción efectiva del sobreajuste. En                comparación con los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
+
+
 
 ## Autor
 
