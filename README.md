@@ -58,18 +58,19 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 ## Versión 2 (V2)
 
 * En V1, se observó un sobreajuste del modelo, donde el rendimiento en el conjunto de entrenamiento era significativamente mejor que en el conjunto de validación.
-* Para mitigar este problema, se exploraron estrategias de regularización basadas en el paper "[An Overview of Overfitting and its Solutions" de Xue Ying (2019)](https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf)
+* Para mitigar este problema, se exploraron estrategias de regularización basadas en el paper "[An Overview of Overfitting and its Solutions" de Xue Ying (2019)](https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf)".
 * De las técnicas descritas en el paper, se decidió implementar regularización L2 y ajustar la tasa de dropout.
-* Todos los demás aspectos de la arquitectura del modelo y el proceso de entrenamiento se mantuvieron sin cambios respecto a V1
- 
-**Test 1 V2**
+* Todos los demás aspectos de la arquitectura del modelo y el proceso de entrenamiento se mantuvieron sin cambios respecto a V1.
+
+### TEST 1 -> V2 - L2 Regularization (Strength=1e-4, Dropout=0.4)
 
 * Para esta primera iteración, se aplicó regularización L2 a las capas Conv2D y la capa Densa intermedia con un strength de 1e-4, manteniendo la tasa de dropout en 0.4. (La regularización L2 se implementó utilizando la función `kernel_regularizer` de Keras).
 
-* Graficas de precision y pérdida
-![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test1.png)
+* Gráficas de precisión y pérdida:
 
-        Evaluación en el Conjunto de Validación:
+    ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test1.png)
+
+    * Evaluación en el Conjunto de Validación:
 
         * Precisión en el conjunto de validación: 79.28%
         * Pérdida en el conjunto de validación: 0.8031
