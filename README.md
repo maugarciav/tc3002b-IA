@@ -170,7 +170,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    
    * Gráficas de precisión y pérdida:
    
-       * *(No proporcionaste la gráfica para Test 1, asegúrate de incluirla aquí)*
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV3-Test3.png)
    
    * Evaluación en el Conjunto de Validación:
    
