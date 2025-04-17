@@ -117,6 +117,11 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 Mauricio Garcia Villanuvea
 
+## Referencias
+
+Ying, X. (2019). An Overview of Overfitting and its Solutions. IOP Conference Series: Journal of Physics: Conference Series, 1168(2), 022022. https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf
+
+
 ## Licencia
 
 [Licencia del proyecto](https://creativecommons.org/publicdomain/zero/1.0/)
