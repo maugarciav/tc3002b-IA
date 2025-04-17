@@ -260,6 +260,7 @@ Mauricio Garcia Villanuvea
 ## Referencias
 
 Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. (2014). Dropout: A Simple Way to Prevent Neural Networks from Overfitting. Journal of Machine Learning Research, 15, 1929-1958, https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf
+
 Ying, X. (2019). An Overview of Overfitting and its Solutions. IOP Conference Series: Journal of Physics: Conference Series, 1168, 022022. https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf
 
 
