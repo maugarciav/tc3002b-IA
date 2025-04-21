@@ -216,42 +216,6 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 
 
-
-  ### TEST 3: V3 - Dropout Fine-Tuning
-
-   * En la tercera iteración, se ajusté las tasas de dropout en todas las capas, buscando un punto óptimo que permita al modelo aprender sin sacrificar demasiado la generalización (manteniendo la pérdida bajo control). Dentro de las diferentes             arquitecturas la que mejor resultado dio fue la siguiente:
-
-       * Capas Convolucionales:
-           * Conv2D (32 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.15)
-           * Conv2D (64 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.175)
-           * Conv2D (128 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.2)
-       * Capas Densas:
-           * Flatten
-           * Dropout (0.35)
-           * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
-           * Dropout (0.35)
-           * Dense (num\_classes, Softmax)
-        
-   * Gráficas de precisión y pérdida:
-   
-       
-   
-   * Evaluación en el Conjunto de Validación:
-   
-       * Precisión en el conjunto de validación: 
-       * Pérdida en el conjunto de validación: 
-   
-      ...
-
-
-
-
 ## Autor
 
 Mauricio Garcia Villanuvea
