@@ -209,10 +209,10 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    
    * Evaluación en el Conjunto de Validación:
    
-       * Precisión en el conjunto de validación: 78.45%
-       * Pérdida en el conjunto de validación: 0.5771
+       * Precisión en el conjunto de validación: 80.10%
+       * Pérdida en el conjunto de validación: 0.5756
    
-      La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 78.45%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5771. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, aunque no alcanza la máxima precisión de V2.
+      La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 80.10%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5776. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, a pesar de que existe una ligera diferencia con la mejor version de V2, la difreencia en la pérdida es mucho mayor con         V2 Test 3.
 
 
 
