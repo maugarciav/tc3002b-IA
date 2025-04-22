@@ -59,8 +59,29 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 * En V1, se observó un sobreajuste del modelo, donde el rendimiento en el conjunto de entrenamiento era significativamente mejor que en el conjunto de validación.
 * Para mitigar este problema, se exploraron estrategias de regularización basadas en el paper "[An Overview of Overfitting and its Solutions" de Xue Ying (2019)](https://iopscience.iop.org/article/10.1088/1742-6596/1168/2/022022/pdf)".
-* De las técnicas descritas en el paper, se decidió implementar regularización L2 y ajustar la tasa de dropout. (La regularización L2 se implementó utilizando la función `kernel_regularizer` de Keras).
-* Todos los demás aspectos de la arquitectura del modelo y el proceso de entrenamiento se mantuvieron sin cambios respecto a V1.
+
+* **Técnicas de Regularización Implementadas:**
+    * **Regularización L2 (Weight Decay):** De las técnicas descritas en el paper de Ying (2019)[cite: 420], se decidió implementar la regularización L2. Esta técnica penaliza la complejidad del modelo añadiendo un término a la función de pérdida que es proporcional a la suma de los cuadrados de los pesos de la red. La idea es que los modelos con pesos más pequeños tienden a ser más simples y generalizan mejor. Al minimizar la función de pérdida modificada, el optimizador se ve incentivado a mantener los pesos pequeños, evitando que algunos pesos individuales crezcan excesivamente y dominen las predicciones. Esto reduce la dependencia del modelo de características específicas (y potencialmente ruidosas) de los datos de entrenamiento. Esto se implementó usando `kernel_regularizer=regularizers.l2(strength)` en las capas Conv2D y Dense, donde `strength`.
+    * **Dropout:** Se ajustó la tasa de dropout aplicada *después* de la capa Flatten para complementar la regularización L2.
+
+* **Arquitectura del Modelo V2:** La arquitectura base se mantuvo similar a V1, pero incorporando regularización L2 en capas convolucionales y densas, y ajustando la tasa de Dropout:
+    * **Capas Convolucionales:**
+        * `Conv2D` (32 filtros, (3x3), ReLU, **Regularizador L2**)
+        * `MaxPooling2D` ((2x2))
+        * `Conv2D` (64 filtros, (3x3), ReLU, **Regularizador L2**)
+        * `MaxPooling2D` ((2x2))
+        * `Conv2D` (128 filtros, (3x3), ReLU, **Regularizador L2**)
+        * `MaxPooling2D` ((2x2))
+    * **Capas Densas:**
+        * `Flatten`
+        * `Dropout`
+        * `Dense` (256 neuronas, ReLU, **Regularizador L2**)
+        * `Dense` (num\_classes, Softmax)
+     
+   * **Entrenamiento:**
+    * Optimizador: Adam (learning rate = 1e-4)
+    * Pérdida: Sparse Categorical Crossentropy
+    * Métricas: Accuracy
 
    ### TEST 1: V2 - Regularization (Strength=1e-4, Dropout=0.4)
    
@@ -109,7 +130,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
        * Precisión en el conjunto de validación: 81.91%
        * Pérdida en el conjunto de validación: 0.8296
    
-       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, logra reduce significativa en la pérdida de validación (0.8296). Esta configuración logra un mejor equilibrio entre la capacidad del            modelo para generalizar a datos no vistos y la confianza en sus predicciones. Las gráficas también confirman una menor divergencia general entre las curvas de entrenamiento y validación, indicando una reducción del sobreajuste, sin                    embargo, en las curvas de pérdida, especialmente la de validación, hay fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los        tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
+       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, se redujo significativa la pérdida de validación (0.8296). Con estos paramteros se logra un mejor equilibrio entre la capacidad del modelo para generalizar a datos no vistos y la confianza en sus predicciones.  Sin embargo, podemos observar en las gráficas fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
 
 
 
