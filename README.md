@@ -136,30 +136,39 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 ##   Versión 3 (V3)
 
-* En V3, se implementó la arquitectura y las técnicas de regularización descritas en el paper "[Dropout: A Simple Way to Prevent Neural Networks from Overfitting](https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)" de Srivastava, Hinton, Krizhevsky, Sutskever, y Salakhutdinov (2014).Este trabajo introduce la técnica de "dropout" como método para reducir el overfitting en redes neuronales profundas. Buscamos tener menor fluctuación en las gráficas de precisón y pérdida lo cual indcaría una mejor estabilidad en el proceso de aprendisaje.
+* En V2 Test 3 se obtuvo un buen equilibrio entre precisión y pérdida, pero las gráficas aún mostraban fluctuaciones, sugiriendo cierta inestabilidad en el aprendizaje. Para abordar esto y buscar un aprendizaje más estable, en V3 se implementó una arquitectura y técnicas de regularización basadas en el paper "[Dropout: A Simple Way to Prevent Neural Networks from Overfitting](https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)" de Srivastava, Hinton, et al. El objetivo es reducir las fluctuaciones en las curvas de precisión y pérdida, indicando una mayor estabilidad y confianza en las predicciones.
+  
 * Los cambios clave con respecto a V2 son:
-
     * **Dropout Placement:** Se aplicó Dropout después de cada capa MaxPooling2D en las capas convolucionales, además de las capas densas.
     * **Max-Norm Regularization:** Se añadió regularización Max-Norm a la capa Dense intermedia.
 
+* **Técnicas de Regularización Implementadas:**
+   * **Dropout:** Esta técnica combate el sobreajuste introduciendo aleatoriedad durante el entrenamiento. En cada paso de entrenamiento, para cada capa donde se aplica, cada neurona tiene una probabilidad `p` de ser retenida (activada) o `1-p` de ser temporalmente "apagada" o "dropeada" (sus salidas se establecen en cero). Esto significa que en cada minibatch, se entrena una red neuronal "adelgazada" diferente, con una subred distinta de neuronas activas.
+   * **Regularización Max-Norm:** Es otra técnica para controlar la complejidad del modelo y prevenir el sobreajuste. Limita la magnitud (norma L2) del vector de pesos entrantes a cada neurona. Esto evita que los pesos crezcan demasiado, lo cual puede ocurrir especialmente cuando se usan tasas de aprendizaje altas y momentos elevados (comunes al entrenar con Dropout para acelerar la convergencia a pesar del ruido introducido). Limitar la norma de los pesos restringe el espacio de parámetros y ayuda a la generalización. Se utilizó un valor de `c=3` para la capa densa intermedia.
+
 * La arquitectura que propoone el paper es la siguiente (los valores de dropout pueden variar e irse ajustando para buscar un mejor resultado al igual que MaxNorm):
 
-    * Capas Convolucionales:
-        * Conv2D (32 filtros, (3x3), ReLU)
-        * MaxPooling2D ((2x2))
-        * Dropout 
-        * Conv2D (64 filtros, (3x3), ReLU)
-        * MaxPooling2D ((2x2))
-        * Dropout 
-        * Conv2D (128 filtros, (3x3), ReLU)
-        * MaxPooling2D ((2x2))
-        * Dropout 
-    * Capas Densas:
-        * Flatten
-        * Dropout 
-        * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
-        * Dropout 
-        * Dense (num\_classes, Softmax)
+    * **Capas Convolucionales:**
+        * `Conv2D` (32 filtros, (3x3), ReLU)
+        * `MaxPooling2D` ((2x2))
+        * `Dropout`
+        * `Conv2D` (64 filtros, (3x3), ReLU)
+        * `MaxPooling2D` ((2x2))
+        * `Dropout`
+        * `Conv2D` (128 filtros, (3x3), ReLU)
+        * `MaxPooling2D` ((2x2))
+        * `Dropout`
+    * **Capas Densas:**
+        * `Flatten`
+        * `Dropout`
+        * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
+        * `Dropout`
+        * `Dense` (num\_classes, Softmax)
+         
+   * **Entrenamiento:**
+       * Optimizador: Adam (learning rate = 1e-4)
+       * Pérdida: Sparse Categorical Crossentropy
+       * Métricas: Accuracy
          
 * **Entrenamiento:**
 
@@ -170,24 +179,24 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
    ### TEST 1: V3 - Increase Dropout
    
-   * Para la primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y manteniedno en las capas densas (Esta es la arquitectura mas similar a la           propuesta en el paper). La arquitectura es la siguiente:
-   
-       * Capas Convolucionales:
-           * Conv2D (32 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.1)  
-           * Conv2D (64 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.25)  
-           * Conv2D (128 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.25)  
-       * Capas Densas:
-           * Flatten
-           * Dropout (0.5)  
-           * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
-           * Dropout (0.5)  
-           * Dense (num\_classes, Softmax)
+   * Para la primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y manteniedno en las capas densas (Esta es la arquitectura mas similar a la propuesta en el paper). La arquitectura es la siguiente:
+ 
+     * **Capas Convolucionales:**
+           * `Conv2D` (32 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.1)
+           * `Conv2D` (64 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.25)
+           * `Conv2D` (128 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.25)
+       * **Capas Densas:**
+           * `Flatten`
+           * `Dropout` (0.5)
+           * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
+           * `Dropout` (0.5)
+           * `Dense` (num\_classes, Softmax)
    
    * Gráficas de precisión y pérdida:
    
@@ -206,23 +215,24 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    ### TEST 2: V3 - Dropout Variation 
    
    * En la segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
-   
-       * Capas Convolucionales:
-           * Conv2D (32 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.2)
-           * Conv2D (64 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.2)
-           * Conv2D (128 filtros, (3x3), ReLU)
-           * MaxPooling2D ((2x2))
-           * Dropout (0.2)
-       * Capas Densas:
-           * Flatten
-           * Dropout (0.4)
-           * Dense (256 neuronas, ReLU, MaxNorm constraint = 3)
-           * Dropout (0.4)
-           * Dense (num\_classes, Softmax)
+ 
+
+       * **Capas Convolucionales:**
+           * `Conv2D` (32 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.2)
+           * `Conv2D` (64 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.2)
+           * `Conv2D` (128 filtros, (3x3), ReLU)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.2)
+       * **Capas Densas:**
+           * `Flatten`
+           * `Dropout` (0.4)
+           * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
+           * `Dropout` (0.4)
+           * `Dense` (num\_classes, Softmax)
    
    * Gráficas de precisión y pérdida:
    
