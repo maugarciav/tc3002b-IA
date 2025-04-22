@@ -79,9 +79,9 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
         * `Dense` (num\_classes, Softmax)
      
    * **Entrenamiento:**
-    * Optimizador: Adam (learning rate = 1e-4)
-    * Pérdida: Sparse Categorical Crossentropy
-    * Métricas: Accuracy
+       * Optimizador: Adam (learning rate = 1e-4)
+       * Pérdida: Sparse Categorical Crossentropy
+       * Métricas: Accuracy
 
    ### TEST 1: V2 - Regularization (Strength=1e-4, Dropout=0.4)
    
