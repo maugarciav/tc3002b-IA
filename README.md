@@ -130,13 +130,13 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
        * Precisión en el conjunto de validación: 81.91%
        * Pérdida en el conjunto de validación: 0.8296
    
-       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, se redujo significativa la pérdida de validación (0.8296). Con estos paramteros se logra un mejor equilibrio entre la capacidad del modelo para generalizar a datos no vistos y la confianza en sus predicciones.  Sin embargo, podemos observar en las gráficas fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
+       En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, se redujo significativa la pérdida de validación (0.8296). Con estos paramteros se logra un mejor equilibrio entre la capacidad del modelo para generalizar a datos no vistos y la confianza en sus predicciones. Sin embargo, podemos observar en las gráficas fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
 
 
 
 ##   Versión 3 (V3)
 
-* En V2 Test 3 se obtuvo un buen equilibrio entre precisión y pérdida, pero las gráficas aún mostraban fluctuaciones, sugiriendo cierta inestabilidad en el aprendizaje. Para abordar esto y buscar un aprendizaje más estable, en V3 se implementó una arquitectura y técnicas de regularización basadas en el paper "[Dropout: A Simple Way to Prevent Neural Networks from Overfitting](https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)" de Srivastava, Hinton, et al. El objetivo es reducir las fluctuaciones en las curvas de precisión y pérdida, indicando una mayor estabilidad y confianza en las predicciones.
+* En V2 Test 3 se obtuvo un buen equilibrio entre precisión y pérdida, pero las gráficas aún mostraban fluctuaciones, sugiriendo cierta inestabilidad en el aprendizaje. Para abordar esto y buscar un aprendizaje más estable, en V3 se implementó una arquitectura y técnicas de regularización basadas en el paper "[Dropout: A Simple Way to Prevent Neural Networks from Overfitting](https://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf)" de Srivastava. El objetivo es reducir las fluctuaciones en las curvas de precisión y pérdida, indicando una mayor estabilidad y confianza en las predicciones.
   
 * Los cambios clave con respecto a V2 son:
     * **Dropout Placement:** Se aplicó Dropout después de cada capa MaxPooling2D en las capas convolucionales, además de las capas densas.
