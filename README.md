@@ -76,8 +76,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
         * `Flatten`
         * `Dropout`
         * `Dense` (256 neuronas, ReLU, **Regularizador L2**)
-        * `Dense` (num\_classes, Softmax)
-     
+        * `Dense` (num\_classes, Softmax)  
    * **Entrenamiento:**
        * Optimizador: Adam (learning rate = 1e-4)
        * Pérdida: Sparse Categorical Crossentropy
@@ -164,18 +163,10 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
         * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
         * `Dropout`
         * `Dense` (num\_classes, Softmax)
-         
-   * **Entrenamiento:**
-       * Optimizador: Adam (learning rate = 1e-4)
-       * Pérdida: Sparse Categorical Crossentropy
-       * Métricas: Accuracy
-         
-* **Entrenamiento:**
-
-    * Optimizador: Adam (learning rate = 1e-4)
-    * Pérdida: Sparse Categorical Crossentropy
-    * Métricas: Accuracy
-
+     * **Entrenamiento:**
+        * Optimizador: Adam (learning rate = 1e-4)
+        * Pérdida: Sparse Categorical Crossentropy
+        * Métricas: Accuracy
 
    ### TEST 1: V3 - Increase Dropout
    
@@ -215,7 +206,6 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    ### TEST 2: V3 - Dropout Variation 
    
    * En la segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
- 
 
        * **Capas Convolucionales:**
            * `Conv2D` (32 filtros, (3x3), ReLU)
