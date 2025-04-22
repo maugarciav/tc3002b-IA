@@ -172,7 +172,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    
    * Para la primera iteración, se ajustaron las tasas de dropout en las capas convolucionales y densas, incrementando el dropout en las primeras capas convolucionales y manteniedno en las capas densas (Esta es la arquitectura mas similar a la propuesta en el paper). La arquitectura es la siguiente:
  
-     * **Capas Convolucionales:**
+      * **Capas Convolucionales:**
            * `Conv2D` (32 filtros, (3x3), ReLU)
            * `MaxPooling2D` ((2x2))
            * `Dropout` (0.1)
@@ -182,7 +182,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
            * `Conv2D` (128 filtros, (3x3), ReLU)
            * `MaxPooling2D` ((2x2))
            * `Dropout` (0.25)
-       * **Capas Densas:**
+      * **Capas Densas:**
            * `Flatten`
            * `Dropout` (0.5)
            * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
@@ -205,7 +205,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
    ### TEST 2: V3 - Dropout Variation 
    
-   * En la segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión
+   * En la segunda iteración, se redujeron las tasas de dropout en todas las capas. Pues los resultados del Test 1 indican que el modelo, con una regularización más fuerte, estaba generalizando en exceso, lo que comprometía la precisión, La arquitectura es la siguiente:
 
        * **Capas Convolucionales:**
            * `Conv2D` (32 filtros, (3x3), ReLU)
