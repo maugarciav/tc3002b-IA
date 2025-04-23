@@ -236,6 +236,43 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
       La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 80.10%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5776. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, a pesar de que existe una ligera diferencia con la mejor version de V2, la difreencia en la pérdida es mucho mayor con         V2 Test 3.
 
 
+## Versión 4 (V4)
+
+   * En esta iteración, se buscó una arquitectura que combinara elementos de las estrategias de regularización exploradas en el paper de Ying y el paper de Srivastava. (Dropout y Max-Norm), con el objetivo de alcanzar un equilibrio óptimo entre una alta precisión y una baja pérdida de validación, indicando una buena generalización y confianza en las predicciones. Después de diferentes pruebas los mejores reultados se llegaron con la siguiente arquitectura:
+
+      * **Capas Convolucionales:**
+           * `Conv2D` (32 filtros, (3x3), ReLU, **Regularizador L2: 1e-5**)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.15)
+           * `Conv2D` (64 filtros, (3x3), ReLU, **Regularizador L2: 1e-5**)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.25)
+           * `Conv2D` (128 filtros, (3x3), ReLU, **Regularizador L2: 1e-5**)
+           * `MaxPooling2D` ((2x2))
+           * `Dropout` (0.25)
+       * **Capas Densas:**
+           * `Flatten`
+           * `Dropout` (0.3)
+           * `Dense` (256 neuronas, ReLU, **MaxNorm constraint = 3**)
+           * `Dropout` (0.3)
+           * `Dense` (num\_classes, Softmax)
+       * **Entrenamiento:**
+           * Optimizador: Adam (learning rate = 1e-4)
+           * Pérdida: Sparse Categorical Crossentropy
+           * Métricas: Accuracy
+
+   
+   * Gráficas de precisión y pérdida:
+   
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV4.png)
+   
+   * Evaluación en el Conjunto de Validación:
+   
+       * Precisión en el conjunto de validación: 80.10%
+       * Pérdida en el conjunto de validación: 0.5562
+
+   Si bien esta arquitectura híbrida no logró superar la mejor precisión obtenida en pruebas anteriores (81.91% en V2 - Test 3), sí demostró un **excelente equilibrio entre la precisión (80.10%) y la pérdida de validación (0.5562)**. Esta baja pérdida sugiere que el modelo realiza predicciones con una alta confianza, a la vez que mantiene una capacidad de generalización robusta gracias a la combinación de las diferentes técnicas de regularización. 
+
 
 ## Autor
 
