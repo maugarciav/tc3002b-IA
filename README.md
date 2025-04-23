@@ -275,6 +275,22 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 
 
+### Evaluación Detallada del Rendimiento del Modelo para V4
+
+Más allá de la precisión y la pérdida globales, se realizó una evaluación del modelo en el conjunto de validación utilizando métricas adicionales para comprender mejor su comportamiento en cada clase:
+
+* **Recall:** Esta métrica es de suma importancia en el contexto de la detección de tumores, ya que mide la capacidad del modelo para identificar correctamente todos los casos positivos reales de cada tipo de tumor y de escáneres normales. Un **Recall alto (cercano a 1)** indica que el modelo es efectivo minimizando los **falsos negativos** (es decir, la situación en la que un tumor está presente pero el modelo no lo detecta). El Recall varía **entre 0 y 1**.
+
+   * **Recall en el conjunto de validación:** 0.7895
+
+* **F1-Score:** El F1-Score proporciona una visión equilibrada del rendimiento del modelo, considerando tanto la **precisión** (¿cuántas de las predicciones positivas realizadas por el modelo fueron realmente correctas?) como el **recall**. Un **F1-Score alto (cercano a 1)** significa que el modelo tiene un buen equilibrio entre precisión y sensibilidad. Esta métrica es especialmente útil cuando las clases podrían estar ligeramente desbalanceadas. El F1-Score también varía **entre 0 y 1**.
+
+   * **F1-Score en el conjunto de validación:** 0.7897
+
+* **Matriz de Confusión:** La matriz de confusión es una herramienta visual para entender dónde el modelo está cometiendo errores. Muestra el número de instancias que fueron clasificadas correctamente e incorrectamente para cada par de clases verdadera y predicha, revelando patrones de confusión entre ellas.
+
+   ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/matriz.png)
+
 
 ## Autor
 
