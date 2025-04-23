@@ -303,24 +303,30 @@ Sigue estos pasos:
     cd tc3002b-IA
     ```
 
-2.  **Crear y activar el entorno virtual:**
+2.  **Descargar y colocar el modelo pre-entrenado:**
+    Debido al tamaño del archivo del modelo pre-entrenado (`modelo_deteccion_tumores.keras`), no se incluye directamente en este repositorio. Sigue estos pasos para descargarlo y colocarlo en la ubicación correcta:
+    1.  Ve al siguiente enlace de Google Drive: 
+    2.  Descarga el archivo `modelo_deteccion_tumores.keras`
+    3.  Copia el archivo descargado y pégalo dentro de la carpeta `web_tumor_detector/` de este proyecto.
+
+3.  **Crear y activar el entorno virtual:**
     ```bash
     python -m venv venv
     source venv/bin/activate   # En macOS y Linux
     venv\Scripts\activate.bat  # En Windows
     ```
 
-3.  **Instalar dependencias:**
+4.  **Instalar dependencias:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Ejecutar la aplicación:**
+5.  **Ejecutar la aplicación:**
     ```bash
     python app.py
     ```
 
-5.  **Abrir en el navegador:**
+6.  **Abrir en el navegador:**
     Ve a `http://127.0.0.1:5000/` en tu navegador.
 
 ## Autor
