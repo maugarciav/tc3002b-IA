@@ -292,6 +292,37 @@ Más allá de la precisión y la pérdida globales, se realizó una evaluación 
    ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/matriz.png)
 
 
+
+## Ejecutar localmente
+
+Sigue estos pasos:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/maugarciav/tc3002b-IA.git
+    cd tc3002b-IA
+    ```
+
+2.  **Crear y activar el entorno virtual:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate   # En macOS y Linux
+    venv\Scripts\activate.bat  # En Windows
+    ```
+
+3.  **Instalar dependencias:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Ejecutar la aplicación:**
+    ```bash
+    python app.py
+    ```
+
+5.  **Abrir en el navegador:**
+    Ve a `http://127.0.0.1:5000/` en tu navegador.
+
 ## Autor
 
 Mauricio Garcia Villanuvea
