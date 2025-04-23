@@ -304,29 +304,30 @@ Sigue estos pasos:
     ```
 
 2.  **Descargar y colocar el modelo pre-entrenado:**
-    Debido al tamaño del archivo del modelo pre-entrenado (`modelo_deteccion_tumores.keras`), no se incluye directamente en este repositorio. Sigue estos pasos para descargarlo y colocarlo en la ubicación correcta:
-    1.  Ve al siguiente enlace de Google Drive: 
-    2.  Descarga el archivo `modelo_deteccion_tumores.keras`
-    3.  Copia el archivo descargado y pégalo dentro de la carpeta `web_tumor_detector/` de este proyecto.
-
-3.  **Crear y activar el entorno virtual:**
+      ```bash
+       Debido al tamaño del archivo del modelo pre-entrenado, no se incluye en el repo
+          1. Ve al siguiente enlace de Google Drive: 
+          2. Descarga el archivo `modelo_deteccion_tumores.keras`
+          3. Copia el archivo descargado y pégalo dentro de la carpeta `web_tumor_detector/` de este proyecto.
+      ```
+4.  **Crear y activar el entorno virtual:**
     ```bash
     python -m venv venv
     source venv/bin/activate   # En macOS y Linux
     venv\Scripts\activate.bat  # En Windows
     ```
 
-4.  **Instalar dependencias:**
+5.  **Instalar dependencias:**
     ```bash
     pip install -r requirements.txt
     ```
 
-5.  **Ejecutar la aplicación:**
+6.  **Ejecutar la aplicación:**
     ```bash
     python app.py
     ```
 
-6.  **Abrir en el navegador:**
+7.  **Abrir en el navegador:**
     Ve a `http://127.0.0.1:5000/` en tu navegador.
 
 ## Autor
