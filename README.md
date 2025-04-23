@@ -143,7 +143,7 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 * **Técnicas de Regularización Implementadas:**
    * **Dropout:** Esta técnica combate el sobreajuste introduciendo aleatoriedad durante el entrenamiento. En cada paso de entrenamiento, para cada capa donde se aplica, cada neurona tiene una probabilidad `p` de ser retenida (activada) o `1-p` de ser temporalmente "apagada" o "dropeada" (sus salidas se establecen en cero). Esto significa que en cada batch, se entrena una red neuronal "adelgazada" diferente, con una subred distinta de neuronas activas.
-   * **Regularización Max-Norm:** Es otra técnica para controlar la complejidad del modelo y prevenir el sobreajuste. Limita la magnitud (norma L2) del vector de pesos entrantes a cada neurona. Esto evita que los pesos crezcan demasiado, lo cual puede ocurrir especialmente cuando se usan tasas de aprendizaje altas y momentos elevados (comunes al entrenar con Dropout para acelerar la convergencia a pesar del ruido introducido). Limitar la norma de los pesos restringe el espacio de parámetros y ayuda a la generalización. Se utilizó un valor de `c=3` para la capa densa intermedia.
+   * **Regularización Max-Norm:** Es otra técnica para controlar la complejidad del modelo y prevenir el sobreajuste. Limita la magnitud del vector de pesos entrantes a cada neurona. Esto evita que los pesos crezcan demasiado. Limitar la norma de los pesos restringe el espacio de parámetros y ayuda a la generalización. Se utilizó un valor de `c=3` para la capa densa intermedia.
 
 * La arquitectura que propoone el paper es la siguiente (los valores de dropout pueden variar e irse ajustando para buscar un mejor resultado):
 
