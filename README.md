@@ -306,7 +306,7 @@ Sigue estos pasos:
 2.  **Descargar y colocar el modelo pre-entrenado:**
       ```bash
        Debido al tamaño del archivo del modelo pre-entrenado, no se incluye en el repo
-          1. Ve al siguiente enlace de Google Drive: 
+          1. Ve al siguiente enlace de Google Drive: https://drive.google.com/file/d/1l0oGi91-9ld8SdvPGlxuHngi7tHhZgRG/view?usp=sharing
           2. Descarga el archivo `modelo_deteccion_tumores.keras`
           3. Copia el archivo descargado y pégalo dentro de la carpeta `web_tumor_detector/` de este proyecto.
       ```
