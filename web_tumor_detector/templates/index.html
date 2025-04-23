@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Tumores</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Detector de Tumores en Imágenes</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="imagen" required>
+        <input type="submit" value="Predecir">
+    </form>
+
+    {% if ruta_imagen_subida %}
+    <div class="uploaded-image">
+        <h2>Imagen:</h2>
+        <img src="{{ ruta_imagen_subida }}" alt="Imagen subida" style="max-width: 300px; height: auto; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 20px;">
+    </div>
+    {% endif %}
+
+    {% if prediccion %}
+    <div class="prediction-container">
+        <h2>Predicción:</h2>
+        <p>{{ prediccion }}</p>
+        {% if probabilidades %}
+        <div class="other-probabilities">
+            <ul>
+                {% for clase, probabilidad in probabilidades.items() %}
+                    {% if clase != prediccion.split(':')[1].split('(')[0].strip() %}
+                        <li>{{ clase }}: <span class="probability">{{ probabilidad|float|round(2) }}%</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>
