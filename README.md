@@ -312,7 +312,8 @@ Sigue estos pasos:
       ```
 4.  **Crear y activar el entorno virtual:**
     ```bash
-    python -m venv venv
+    cd web_tumor_detector
+    python3 -m venv venv
     source venv/bin/activate   # En macOS y Linux
     venv\Scripts\activate.bat  # En Windows
     ```
