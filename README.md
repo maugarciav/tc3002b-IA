@@ -274,6 +274,8 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    Si bien esta arquitectura híbrida no logró superar la mejor precisión obtenida en pruebas anteriores (81.91% en V2 - Test 3), sí demostró un **excelente equilibrio entre la precisión (80.10%) y la pérdida de validación (0.5562)**. Esta baja pérdida sugiere que el modelo realiza predicciones con una alta confianza, a la vez que mantiene una capacidad de generalización robusta gracias a la combinación de las diferentes técnicas de regularización. 
 
 
+
+
 ## Autor
 
 Mauricio Garcia Villanuvea
