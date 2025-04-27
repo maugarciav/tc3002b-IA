@@ -371,15 +371,15 @@ Sigue estos pasos:
     1. Abre el archivo `web_tumor_detector/app.py` con un editor de texto.
     2. Localiza la siguiente línea de código:
 
-       ```python
-       model = tf.keras.models.load_model('') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
-       ```
+           ```python
+           model = tf.keras.models.load_model('') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+           ```
 
     3.  Escribe el nombre del archivo del modelo que deseas utilizar (asegurándote de incluir la extensión `.keras`). Por ejemplo, si quieres usar el modelo V4, la línea debería quedar así:
 
-        ```python
-        model = tf.keras.models.load_model('modelo_deteccion_tumores_V4.keras') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
-        ```
+           ```python
+           model = tf.keras.models.load_model('modelo_deteccion_tumores_V4.keras') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+           ```
 
     4.  Guarda los cambios en el archivo `app.py`.
     ```
