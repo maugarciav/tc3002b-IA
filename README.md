@@ -235,13 +235,21 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    * Gráficas de precisión y pérdida:
    
        ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV3-Test2.png)
+
+  * Matriz de Confusión:
+
+    ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/MatrizV3Test2.png)
    
    * Evaluación en el Conjunto de Validación:
    
        * Precisión en el conjunto de validación: 80.10%
        * Pérdida en el conjunto de validación: 0.5756
+       * Recall General (promedio): 0.8109
+       * F1-Score General (promedio): 0.7945
    
       La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 80.10%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5776. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, a pesar de que existe una ligera diferencia con la mejor version de V2, la difreencia en la pérdida es mucho mayor con         V2 Test 3.
+
+      La matriz de confusión nos indica un rendimiento relativamente equilibrado entre las clases, aunque se hay una mayor confusión en la clasificación del meningioma. La clase normal sigue presentando un recall  alto. Los valores generales de Recall (0.8109) y F1-Score (0.7945) indican una buena capacidad del modelo para identificar los casos positivos y un equilibrio razonable entre precisión y sensibilidad. En resumen, Test 2 nos da una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, sin embargo hay una ligera diferencia en presision y F1 con la mejor versión de V2, la diferencia en la pérdida es mucho mayor con V2 Test 3.
 
 
 ## Versión 4 (V4)
