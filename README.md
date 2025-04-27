@@ -289,7 +289,7 @@ Más allá de la precisión y la pérdida globales, se realizó una evaluación 
 
 * **Matriz de Confusión:** La matriz de confusión es una herramienta visual para entender dónde el modelo está cometiendo errores. Muestra el número de instancias que fueron clasificadas correctamente e incorrectamente para cada par de clases verdadera y predicha, revelando patrones de confusión entre ellas.
 
-   ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/matriz.png)
+   ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/MatrizV4.png)
 
 
 
