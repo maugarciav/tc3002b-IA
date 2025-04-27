@@ -306,6 +306,40 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
       Al igual que en las versiones anteriores (V2 y V3), la matriz de confusión de V4 revela un buen rendimiento general en la clasificación, con la clase normal presentando un recall alto, lo que indica una buena capacidad para identificar correctamente los escáneres sin tumores. Sin embargo, al igual que en los modelos previos, se observa una tendencia a la confusión entre glioma y meningioma. A pesar de esta dificultad persistente, los valores generales de Recall y F1-Score indican un buen rendimiento.
 
 
+## Conclusiones
+
+Resumen de resultados de los mejores test por verisón.
+
+| Modelo      | Precisión en Validación | Pérdida en Validación | Recall General | F1-Score General |
+| :---------- | :---------------------: | :--------------------: | :------------: | :--------------: |
+| V2 - Test 3 |         81.91%          |         0.8296         |     0.8401     |      0.8283      |
+| V3 - Test 2 |         80.10%          |         0.5756         |     0.8109     |      0.7945      |
+| V4          |         80.26%          |         0.6187         |     0.8026     |      0.8001      |
+
+**Análisis de los Resultados:**
+* **Precisión:** V2 - Test 3 obtuvo la mayor precisión en el conjunto de validación (81.91%).
+* **Pérdida:** V3 - Test 2 registró la menor pérdida en el conjunto de validación (0.5756).
+* **Recall General:** V2 - Test 3 también obtuvo el mejor Recall general (0.8401).
+* **F1-Score General:** V2 - Test 3 lideró también en el F1-Score general (0.8283).
+
+
+Si bien V2 - Test 3 logró la mayor precisión, V3 - Test 2 demostró la menor pérdida de validación, lo que sugiere una mayor confianza en sus predicciones. V4, diseñado como una combinación de estrategias, ofreció un rendimiento equilibrado en todas las métricas.
+
+Es importante notar que, a pesar de las diferencias en las métricas generales, el análisis de las matrices de confusión reveló una tendencia común en los tres modelos: un buen rendimiento en la identificación de escáneres normales (alto recall para la clase normal) y una mayor dificultad para distinguir entre gliomas y meningiomas, lo que podría ser un área para futuras investigaciones y mejoras en el modelo.
+
+**Considerando la Importancia de la Detección de Tumores:**
+
+En el contexto de la detección de tumores cerebrales, **minimizar los falsos negativos es muy importante**. Un falso negativo (decirle a alguien que no tiene un tumor cuando sí lo tiene) puede retrasar el diagnóstico y el tratamiento, con consecuencias potencialmente graves para la salud del paciente. Por otro lado, un falso positivo (decirle a alguien que tiene un tumor cuando no lo tiene) puede generar ansiedad y requerir pruebas adicionales innecesarias, lo cual también tiene un costo emocional y económico. Sin embargo, **el impacto de un falso negativo suele ser considerado más grave**. Por lo tanto, un modelo con un **Recall más alto** es preferible, ya que indica una mayor capacidad para detectar todos los casos positivos reales.
+
+**Elección del Mejor Modelo:**
+
+Basándonos en esta consideración, **V2 - Test 3 parece ser el modelo más adecuado**. Aunque no tiene la menor pérdida, presenta el **Recall general más alto (0.8401)**, lo que significa que es el más efectivo para minimizar la probabilidad de no detectar un tumor presente. Su alta precisión y F1-Score también respaldan su buen rendimiento general.
+
+Si bien V3 - Test 2 muestra la menor pérdida (mayor confianza en las predicciones), su Recall es ligeramente inferior. V4 ofrece un buen equilibrio, pero su Recall tampoco supera al de V2 - Test 3.
+
+**Conclusión Final:**
+
+Dado el contexto de la detección de tumores cerebrales y la mayor importancia de minimizar los falsos negativos, **V2 - Test 3 es la opción preferible debido a su Recall general más alto**. 
 
 
 
