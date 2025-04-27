@@ -382,7 +382,7 @@ Sigue estos pasos:
     3.  Escribe el nombre del archivo del modelo que deseas utilizar (asegurándote de incluir la extensión `.keras`). Por ejemplo, si quieres usar el modelo V4, la línea debería quedar así:
 
            ```python
-           model = tf.keras.models.load_model('modelo_deteccion_tumores_V4.keras') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+           model = tf.keras.models.load_model('modelo_deteccion_tumores_V4') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
            ```
 
     4.  Guarda los cambios en el archivo `app.py`.
