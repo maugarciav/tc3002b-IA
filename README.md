@@ -349,7 +349,7 @@ Sigue estos pasos:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/maugarciav/tc3002b-IA.git](https://github.com/maugarciav/tc3002b-IA.git)
+    git clone https://github.com/maugarciav/tc3002b-IA.git
     cd tc3002b-IA
     ```
 
