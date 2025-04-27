@@ -123,13 +123,21 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    * Gráficas de precisión y pérdida:
    
        ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV2-Test3.png)
+
+   * Matriz de Confusión:
+     
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/MatrizV2Test3.png)
    
    * Evaluación en el Conjunto de Validación:
    
        * Precisión en el conjunto de validación: 81.91%
        * Pérdida en el conjunto de validación: 0.8296
+       * Recall General (promedio): 0.8401
+       * F1-Score General (promedio): 0.8283
    
        En este Test el modelo mantiene la alta precisión de validación alcanzada en el Test 2 y, al mismo tiempo, se redujo significativa la pérdida de validación (0.8296). Con estos paramteros se logra un mejor equilibrio entre la capacidad del modelo para generalizar a datos no vistos y la confianza en sus predicciones. Sin embargo, podemos observar en las gráficas fluctuaciones o "saltos" pronunciados, esto podría indicar cierta inestabilidad en el proceso de aprendizaje, lo cual es algo a tomar en cuenta. En fin a comparación de los tests anteriores, el Test 3 nos da los mejores resultados entre precisión y pérdida.
+
+       La matriz de confusión nos dice que, el rendimiento general es bueno pero existen algunas instancias de confusión entre las clases de tumores. Específicamente, entre gliomas y meningiomas. A pesar de estas confusiones, el modelo demuestra una buena sensibilidad general (Recall) y un equilibrio adecuado entre precisión y sensibilidad (F1-Score). Las fluctuaciones observadas en las gráficas de entrenamiento y validación aún indican cierta inestabilidad en el aprendizaje, lo cual es algo que vamos a explorar en siguientes versiones.
 
 
 
