@@ -349,23 +349,47 @@ Sigue estos pasos:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone https://github.com/maugarciav/tc3002b-IA.git
+    git clone [https://github.com/maugarciav/tc3002b-IA.git](https://github.com/maugarciav/tc3002b-IA.git)
     cd tc3002b-IA
     ```
 
-2.  **Descargar y colocar el modelo pre-entrenado:**
-      ```bash
-       Debido al tamaño del archivo del modelo pre-entrenado, no se incluye en el repo
-          1. Ve al siguiente enlace de Google Drive: https://drive.google.com/file/d/1l0oGi91-9ld8SdvPGlxuHngi7tHhZgRG/view?usp=sharing
-          2. Descarga el archivo `modelo_deteccion_tumores.keras`
-          3. Copia el archivo descargado y pégalo dentro de la carpeta `web_tumor_detector/` de este proyecto.
-      ```
+2.  **Descargar los modelos pre-entrenados:**
+    ```bash
+    Debido al tamaño de los archivos de los modelos pre-entrenados, no se incluyen en el repositorio.
+    Deberás descargar los modelos desde el siguiente enlace de Google Drive: https://drive.google.com/drive/folders/1m6FYst7gtG0msE0miAY-0gTY1NLh4EjI?usp=sharing
+
+    Encontrarás tres archivos:
+        - modelo_deteccion_tumores_V2TEST3.keras
+        - modelo_deteccion_tumores_V3TEST2.keras
+        - modelo_deteccion_tumores_V4.keras
+
+    Descarga los tres archivos.
+    ```
+
+3.  **Configurar el modelo a utilizar en `app.py`:**
+    ```bash
+    1. Abre el archivo `web_tumor_detector/app.py` con un editor de texto.
+    2. Localiza la siguiente línea de código:
+
+       ```python
+       model = tf.keras.models.load_model('') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+       ```
+
+    3.  Escribe el nombre del archivo del modelo que deseas utilizar (asegurándote de incluir la extensión `.keras`). Por ejemplo, si quieres usar el modelo V4, la línea debería quedar así:
+
+        ```python
+        model = tf.keras.models.load_model('modelo_deteccion_tumores_V4.keras') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+        ```
+
+    4.  Guarda los cambios en el archivo `app.py`.
+    ```
+
 4.  **Crear y activar el entorno virtual:**
     ```bash
     cd web_tumor_detector
     python3 -m venv venv
-    source venv/bin/activate   # En macOS y Linux
-    venv\Scripts\activate.bat  # En Windows
+    source venv/bin/activate     # En macOS y Linux
+    venv\Scripts\activate.bat   # En Windows
     ```
 
 5.  **Instalar dependencias:**
