@@ -33,24 +33,28 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 2.  **Preprocesamiento de Datos:**
     * Reescalado de las imágenes para normalizar los valores de los píxeles.
     * Aumento de datos mediante rotación (hasta 18 grados) y volteo horizontal para incrementar la diversidad del conjunto de entrenamiento.
-    * División del dataset en conjuntos de entrenamiento (80%) y validación (20%). 
-3.  **Arquitectura del Modelo CNN (V1):**
-    * El modelo es una red neuronal secuencial:
-        * 3 capas Conv2D con función de activación ReLU.
-        * 3 capas MaxPooling2D. 
-        * 1 capa Flatten.
-        * 1 capa Dropout (tasa de 0.4). 
-        * 1 capa Densa con 256 nodos y función de activación ReLU. 
-        * 1 capa Densa (capa de salida) con 4 nodos y función de activación Softmax. 
-4.  **Entrenamiento del Modelo:**
-    * Optimización: Optimizador Adam con una tasa de aprendizaje de 1e-4. 
-    * Función de Pérdida: Sparse Categorical Crossentropy (para clasificación multiclase con etiquetas enteras)
-    * Métricas: Precisión (Accuracy) para evaluar el rendimiento del modelo.
-5.  **Evaluación del Modelo:**
-    * Evaluación del modelo en el conjunto de validación para medir su capacidad de generalización.
-    * Creamos una Matriz de confusión para analizar el rendimiento del modelo por clase.
+    * División del dataset en conjuntos de entrenamiento (80%) y validación (20%).
+  
+## Versión 1 (V1)
 
-## Resultados en Versión 1 (V1)
+**Arquitectura del Modelo CNN (V1):**
+
+El modelo es una red neuronal secuencial:
+
+   * 3 capas Conv2D con función de activación ReLU.
+   * 3 capas MaxPooling2D.
+   * 1 capa Flatten.
+   * 1 capa Dropout (tasa de 0.4).
+   * 1 capa Densa con 256 nodos y función de activación ReLU.
+   * 1 capa Densa (capa de salida) con 4 nodos y función de activación Softmax.
+
+**Entrenamiento del Modelo:**
+
+* Optimización: Optimizador Adam con una tasa de aprendizaje de 1e-4.
+* Función de Pérdida: Sparse Categorical Crossentropy (para clasificación multiclase con etiquetas enteras)
+* Métricas: Precisión (Accuracy) para evaluar el rendimiento del modelo.
+
+ ### Resultados en Versión 1 (V1)
 
 * Las gráficas de precisión y pérdida durante el entrenamiento muestran la evolución del rendimiento del modelo a lo largo de las 15 epochs
 ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV1.png)
