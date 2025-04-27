@@ -20,6 +20,13 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
 
 <img src="https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/classes.png" height="500">
 
+## Conceptos
+* **Recall (Sensibilidad):** Esta métrica es de suma importancia en el contexto de la detección de tumores, ya que mide la capacidad del modelo para identificar correctamente todos los casos positivos reales de cada tipo de tumor y de escáneres normales. Un **Recall alto (cercano a 1)** indica que el modelo es efectivo minimizando los **falsos negativos** (es decir, la situación en la que un tumor está presente pero el modelo no lo detecta). El Recall varía **entre 0 y 1**.
+
+* **F1-Score:** El F1-Score proporciona una visión equilibrada del rendimiento del modelo, considerando tanto la **precisión** (¿cuántas de las predicciones positivas realizadas por el modelo fueron realmente correctas?) como el **recall**. Un **F1-Score alto (cercano a 1)** significa que el modelo tiene un buen equilibrio entre precisión y sensibilidad. Esta métrica es especialmente útil cuando las clases podrían estar ligeramente desbalanceadas. El F1-Score también varía **entre 0 y 1**.
+
+* **Matriz de Confusión:** La matriz de confusión es una herramienta visual para entender dónde el modelo está cometiendo errores. Muestra el número de instancias que fueron clasificadas correctamente e incorrectamente para cada par de clases verdadera y predicha, revelando patrones de confusión entre ellas.
+
 ## Estructura del Proyecto
 
 1.  **Carga de Datos:** Se utiliza la librería `kagglehub` para descargar el dataset directamente desde Kaggle.
@@ -281,31 +288,24 @@ El dataset utilizado en este proyecto es el "[Brain tumors 256x256](https://www.
    * Gráficas de precisión y pérdida:
    
        ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/TrainValV4.png)
+
+   * Matriz de Confusión:
+
+       ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/MatrizV4.png)
+
    
    * Evaluación en el Conjunto de Validación:
    
        * Precisión en el conjunto de validación: 80.26%
        * Pérdida en el conjunto de validación: 0.6187
+       * Recall General: 0.8026
+       * F1-Score General: 0.8001
 
-      Si bien esta arquitectura híbrida no logró superar la mejor precisión obtenida en pruebas anteriores (81.91% en V2 - Test 3), sí demostró un **excelente equilibrio entre la precisión (80.26%) y la pérdida de validación (0.6187)**. Esta baja           pérdida sugiere que el modelo realiza predicciones con una alta confianza, a la vez que mantiene una capacidad de generalización robusta gracias a la combinación de las diferentes técnicas de regularización. 
+      Si bien esta arquitectura híbrida no logró superar la mejor precisión obtenida en pruebas anteriores (81.91% en V2 - Test 3), sí demostró un **excelente equilibrio entre la precisión (80.26%) y la pérdida de validación (0.6187)**. Esta baja           pérdida sugiere que el modelo realiza predicciones con una alta confianza, a la vez que mantiene una capacidad de generalización robusta gracias a la combinación de las diferentes técnicas de regularización.
+     
+      Al igual que en las versiones anteriores (V2 y V3), la matriz de confusión de V4 revela un buen rendimiento general en la clasificación, con la clase normal presentando un recall alto, lo que indica una buena capacidad para identificar correctamente los escáneres sin tumores. Sin embargo, al igual que en los modelos previos, se observa una tendencia a la confusión entre glioma y meningioma. A pesar de esta dificultad persistente, los valores generales de Recall y F1-Score indican un buen rendimiento.
 
 
-
-## Evaluación Detallada del Rendimiento del Modelo para V4
-
-Más allá de la precisión y la pérdida globales, se realizó una evaluación del modelo en el conjunto de validación utilizando métricas adicionales para comprender mejor su comportamiento en cada clase:
-
-* **Recall (Sensibilidad):** Esta métrica es de suma importancia en el contexto de la detección de tumores, ya que mide la capacidad del modelo para identificar correctamente todos los casos positivos reales de cada tipo de tumor y de escáneres normales. Un **Recall alto (cercano a 1)** indica que el modelo es efectivo minimizando los **falsos negativos** (es decir, la situación en la que un tumor está presente pero el modelo no lo detecta). El Recall varía **entre 0 y 1**.
-
-    * **Recall en el conjunto de validación:** 0.8026
-
-* **F1-Score:** El F1-Score proporciona una visión equilibrada del rendimiento del modelo, considerando tanto la **precisión** (¿cuántas de las predicciones positivas realizadas por el modelo fueron realmente correctas?) como el **recall**. Un **F1-Score alto (cercano a 1)** significa que el modelo tiene un buen equilibrio entre precisión y sensibilidad. Esta métrica es especialmente útil cuando las clases podrían estar ligeramente desbalanceadas. El F1-Score también varía **entre 0 y 1**.
-
-    * **F1-Score en el conjunto de validación:** 0.8001
-
-* **Matriz de Confusión:** La matriz de confusión es una herramienta visual para entender dónde el modelo está cometiendo errores. Muestra el número de instancias que fueron clasificadas correctamente e incorrectamente para cada par de clases verdadera y predicha, revelando patrones de confusión entre ellas.
-
-   ![](https://github.com/maugarciav/tc3002b-IA/blob/main/IMG/MatrizV4.png)
 
 
 
