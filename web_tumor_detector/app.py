@@ -10,8 +10,11 @@ app.config['UPLOAD_FOLDER'] = 'temp'
 
 # Cargar el modelo Keras
 try:
-    model = tf.keras.models.load_model('') #!!!1NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
-    print("Modelo cargado exitosamente.")
+    model = tf.keras.models.load_model('') #!!!NOMBRE DEL MODELO QUE QUIERS PROBAR!!!!!
+    #model = tf.keras.models.load_model('modelo_deteccion_tumores_V2TEST3.keras') 
+    #model = tf.keras.models.load_model('modelo_deteccion_tumores_V3TEST2.keras') 
+    #model = tf.keras.models.load_model('modelo_deteccion_tumores_V4.keras') 
+    #print("Modelo cargado exitosamente.")
 except Exception as e:
     print(f"Error al cargar el modelo: {e}")
     model = None
