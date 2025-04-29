@@ -260,7 +260,7 @@ El modelo es una red neuronal secuencial:
    
       La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 80.10%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5776. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, a pesar de que existe una ligera diferencia con la mejor version de V2, la difreencia en la pérdida es mucho mayor con         V2 Test 3.
 
-      La matriz de confusión nos indica un rendimiento relativamente equilibrado entre las clases, aunque se hay una mayor confusión en la clasificación del meningioma. La clase normal sigue presentando un recall  alto. Los valores generales de Recall (0.8109) y F1-Score (0.7945) indican una buena capacidad del modelo para identificar los casos positivos y un equilibrio razonable entre precisión y sensibilidad. En resumen, Test 2 nos da una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, sin embargo hay una ligera diferencia en presision y F1 con la mejor versión de V2, la diferencia en la pérdida es mucho mayor con V2 Test 3.
+      La matriz de confusión nos indica un rendimiento relativamente equilibrado entre las clases. La clase normal sigue presentando un recall  alto. Los valores generales de Recall (0.8109) y F1-Score (0.7945) indican una buena capacidad del modelo para identificar los casos positivos y un equilibrio razonable entre precisión y sensibilidad. En resumen, Test 2 nos da una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, sin embargo hay una ligera diferencia en presision y F1 con la mejor versión de V2, la diferencia en la pérdida es mucho mayor con V2 Test 3.
 
 
 ## Versión 4 (V4)
@@ -329,7 +329,7 @@ Resumen de resultados de los mejores test por verisón.
 
 Si bien V2 - Test 3 logró la mayor precisión, V3 - Test 2 demostró la menor pérdida de validación, lo que sugiere una mayor confianza en sus predicciones. V4, diseñado como una combinación de estrategias, ofreció un rendimiento equilibrado en todas las métricas.
 
-Es importante notar que, a pesar de las diferencias en las métricas generales, el análisis de las matrices de confusión reveló una tendencia común en los tres modelos: un buen rendimiento en la identificación de escáneres normales (alto recall para la clase normal) y una mayor dificultad para distinguir entre gliomas y meningiomas, lo que podría ser un área para futuras investigaciones y mejoras en el modelo.
+Es importante notar que, a pesar de las diferencias en las métricas generales, el análisis de las matrices de confusión nos deja ver una tendencia común en los tres modelos: un buen rendimiento en la identificación de escáneres normales (alto recall para la clase normal) y una mayor dificultad para distinguir entre gliomas y meningiomas, lo que podría ser un área para futuras investigaciones y mejoras en el modelo.
 
 **Considerando la Importancia de la Detección de Tumores:**
 
