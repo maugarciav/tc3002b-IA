@@ -255,12 +255,12 @@ El modelo es una red neuronal secuencial:
    
        * Precisión en el conjunto de validación: 80.10%
        * Pérdida en el conjunto de validación: 0.5756
-       * Recall General (promedio): 0.8109
-       * F1-Score General (promedio): 0.7945
+       * Recall General (promedio): 0.7862
+       * F1-Score General (promedio): 0.7858
    
       La reducción en las tasas de dropout mejoró significativamente la precisión del modelo en comparación con el Test 1, alcanzando un 80.10%. Este aumento en la precisión indica que la menor regularización permitió al modelo capturar información         más relevante de los datos. Si bien esta precisión es ligeramente inferior a la mejor precisión obtenida en V2, la pérdida en el conjunto de validación disminuyó notablemente a 0.5776. En resumen, se observa una compensación: Test 2 ofrece            una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, a pesar de que existe una ligera diferencia con la mejor version de V2, la difreencia en la pérdida es mucho mayor con         V2 Test 3.
 
-      La matriz de confusión nos indica un rendimiento relativamente equilibrado entre las clases. La clase normal sigue presentando un recall  alto. Los valores generales de Recall (0.8109) y F1-Score (0.7945) indican una buena capacidad del modelo para identificar los casos positivos y un equilibrio razonable entre precisión y sensibilidad. En resumen, Test 2 nos da una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, sin embargo hay una ligera diferencia en presision y F1 con la mejor versión de V2, la diferencia en la pérdida es mucho mayor con V2 Test 3.
+      La matriz de confusión nos indica un rendimiento relativamente equilibrado entre las clases. La clase normal sigue presentando un recall  alto. Los valores generales de Recall (0.7862) y F1-Score (0.7858) indican una buena capacidad del modelo para identificar los casos positivos y un equilibrio razonable entre precisión y sensibilidad. En resumen, Test 2 nos da una mejora considerable en la confianza de las predicciones (menor pérdida) y un aumento en la precisión respecto a Test 1, sin embargo hay una ligera diferencia en presision y F1 con la mejor versión de V2, la diferencia en la pérdida es mucho mayor con V2 Test 3.
 
 
 ## Versión 4 (V4)
@@ -317,7 +317,7 @@ Resumen de resultados de los mejores test por verisón.
 | Modelo      | Precisión en Validación | Pérdida en Validación | Recall General | F1-Score General |
 | :---------- | :---------------------: | :--------------------: | :------------: | :--------------: |
 | V2 - Test 3 |         81.91%          |         0.8296         |     0.8401     |      0.8283      |
-| V3 - Test 2 |         80.10%          |         0.5756         |     0.8109     |      0.7945      |
+| V3 - Test 2 |         80.10%          |         0.5756         |     0.7862     |      0.7858      |
 | V4          |         80.26%          |         0.6187         |     0.8026     |      0.8001      |
 
 **Análisis de los Resultados:**
